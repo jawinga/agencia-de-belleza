@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Quinsi";
+  src: url("fonts/Quinsi.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body {
   height: 100%;
@@ -12,14 +19,41 @@ body {
   line-height: 1;
   font-family: "Open Sans", sans-serif;
   background: #ee9ca7;
-  background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7);
-  background: linear-gradient(#ffdde1, #ee9ca7);
+  /* background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7);
+  background: linear-gradient(#ffdde1, #ee9ca7); */
+
+  background-image: linear-gradient(
+    to right,
+    #ffdde1 0%,
+    #ee9ca7 50%,
+    #f7b7d5 100%
+  );
+  animation: color 12s ease-in-out infinite;
+  background-size: 300% 300%;
+}
+
+@keyframes color {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }
 
 h1,
 h2,
 h3 {
-  font-family: "Noto Serif Display", serif;
+  font-family: "Quinsi", Arial, sans-serif;
+}
+
+h2 {
+  font-size: 3em;
+  margin-top: 1.5em;
+  margin-bottom: 1.2em;
 }
 
 ul,
@@ -35,7 +69,10 @@ a {
 /* Main layout */
 .container-grid {
   display: grid;
-  grid-template-rows: 80px minmax(300px, auto) minmax(200px, auto);
+  grid-template-rows: 80px minmax(300px, auto) auto minmax(300px, auto) 300px minmax(
+      200px,
+      auto
+    );
   grid-template-columns: 10% repeat(3, 1fr) 10%;
   grid-gap: 2em;
 }
@@ -46,7 +83,7 @@ a {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 2fr repeat(3, 1fr) 2fr;
-  background-color: white;
+  background-color: #f5f5f3;
   align-items: center;
 }
 
@@ -92,14 +129,14 @@ a {
 .main__left-side {
   display: grid;
   align-items: center;
-  gap: 1em;
+  gap: 1.2em;
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
 }
 
 .main__left-side__title {
   justify-self: center;
-  font-size: 4em;
+  font-size: 5em;
   text-align: center;
   line-height: 1.5em;
 }
@@ -110,7 +147,7 @@ a {
   grid-template-columns: 1fr;
   align-items: center;
   justify-content: center;
-  gap: 1.5em;
+  gap: 2.5em;
 }
 
 .main__left-side__content__paragraph {
@@ -119,7 +156,7 @@ a {
   text-align: center;
 }
 
-.main__left-side__content__CTA-button {
+.cta {
   background-color: purple;
   padding: 1.5rem 3.5rem;
   color: white;
@@ -128,6 +165,37 @@ a {
   align-items: center;
   justify-content: center;
   gap: 1.1em;
+  transition: all 0.5s ease;
+  font-weight: 600;
+}
+
+.cta2 {
+  background-color: transparent;
+  margin: 1.5rem 3.5rem;
+  color: purple;
+  justify-self: center;
+  filter: drop-shadow(0 0 1rem rgba(184, 122, 133, 0.5));
+  align-items: center;
+  justify-content: center;
+  gap: 1.1em;
+  transition: all 0.5s ease;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.cta2:hover {
+  color: white; /* Text color contrasts hover background */
+  transform: translateY(-2px); /* Adds subtle animation */
+  filter: drop-shadow(
+    0 0 1.5rem rgb(184, 122, 133)
+  ); /* Slightly more intense shadow */
+}
+
+.cta:hover {
+  background-color: rgb(92, 24, 92);
+  filter: drop-shadow(10px 10px 3px rgb(184, 122, 133));
+  transform: translateY(-2px);
 }
 
 .cta-icon {
@@ -145,5 +213,202 @@ a {
   justify-self: center;
   width: 100%;
   height: auto;
-  filter: drop-shadow(30px 10px 4px rgb(184, 122, 133));
+  transition: all 1s ease-in-out;
+  filter: drop-shadow(15px 8px 4px rgb(184, 122, 133));
+}
+
+.main__right-side_image-model:hover {
+  filter: drop-shadow(30px 10px 4px rgb(136, 90, 98));
+  transform: translateY(-4px);
+}
+
+/*Servicios*/
+
+.services__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  grid-row: 3/4;
+  grid-column: 2/5;
+  justify-items: center;
+  grid-column-gap: 2.5em;
+}
+
+.services__container__title {
+  justify-self: center;
+  grid-column: 1/-1;
+}
+
+.services__container__maquillaje {
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+.services__container__manicura {
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+.services__container__peluqueria {
+  grid-row: 2/3;
+  grid-column: 3/4;
+}
+
+.services__container__element__service {
+  font-family: "Quinsi", Arial, sans-serif;
+  font-size: 1.4em;
+}
+
+.circle {
+  width: 300px; /* Diameter of the circle */
+  height: 300px; /* Diameter of the circle */
+  border-radius: 50%; /* Makes the element circular */
+  background-size: cover; /* Ensures the image covers the circle */
+  background-position: center; /* Centers the image in the circle */
+  background-repeat: no-repeat; /* Prevents repeating of the image */
+  filter: drop-shadow(15px 8px 4px rgb(184, 122, 133));
+  transition: all ease-in 1s;
+}
+
+.circle:hover {
+  filter: drop-shadow(20px 9px 6px rgb(136, 90, 98)) grayscale(1);
+  transform: translateY(-3px);
+}
+
+.element {
+  display: grid;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  border-radius: 5%;
+  background-color: rgb(215, 144, 157);
+  padding: 2em;
+  color: white;
+}
+
+.testimonials {
+  grid-row: 4/5;
+  grid-column: 2/5;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2em;
+}
+
+.testimonials__title {
+  grid-row: 1/2;
+  grid-column: 1/-1;
+  align-self: center;
+  justify-self: center;
+}
+
+.testimonials__container {
+  grid-row: 2/3;
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5em;
+}
+
+.testimonial {
+  /* background-color: #e2dadb; */
+  padding: 1.5em;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  row-gap: 1.3em;
+  border-radius: 5%;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 22px 0 rgba(0, 0, 0, 0.37);
+}
+
+.circle__small {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+
+.testimonial__name {
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+
+.testimonial__CTA {
+  grid-row: 5/6;
+  grid-column: 3/4;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+cite {
+  font-family: "Quinsi", Arial, sans-serif;
+  font-weight: 400;
+}
+
+.testimonial__content {
+  grid-row: 1/2;
+  grid-column: 1/-1;
+  text-align: center;
+  line-height: 2em;
+  font-weight: 400;
+}
+
+.testimonialPenelope {
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+.testimonialMaria {
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
+.testimonialLaura {
+  grid-row: 1/2;
+  grid-column: 3/4;
+}
+
+.gallery {
+  grid-row: 5/6;
+  grid-column: 2/5;
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+.gallery__square {
+  background-image: url(img/manicura.jpg);
+  height: 290px;
+  width: 80%;
+  background-color: black;
+  background-size: cover; /* Ensures the image covers the circle */
+  background-position: center; /* Centers the image in the circle */
+  background-repeat: no-repeat; /* Prevents repeating of the image */
+  box-sizing: border-box; /* Include padding and border in size */
+}
+
+.footer {
+  grid-row: 6/7;
+  grid-column: 1/-1;
+  background-color: #f5f5f3;
 }
