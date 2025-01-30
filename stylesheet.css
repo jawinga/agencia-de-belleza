@@ -137,6 +137,14 @@ a {
   color: purple;
 }
 
+svg {
+  fill: purple;
+  stroke: none;
+  transition: fill 0.3s;
+  width: 40px;
+  height: 40px;
+}
+
 /********************
   5. MAIN CONTENT
 ********************/
@@ -506,11 +514,16 @@ cite {
   .main {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto);
+    grid-column: 1/-1;
   }
 
   .navegation {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  svg {
+    display: none;
   }
 
   .logotipo {
@@ -592,11 +605,167 @@ cite {
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    font-size: 20px;
+  }
+
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-column: 2/5;
+  }
+
+  /* .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-column: 1/-1;
+  } */
+
+  .navegation {
+    grid-row: 1/3;
+
+    display: grid;
+    grid-template-rows: 2fr repeat(3, 1fr) 2fr !important;
+  }
+
+  .nav-bar {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(3, auto);
+    row-gap: 5em;
+    padding-left: 1.2em;
+    padding-right: 1em;
+    padding-bottom: 5em;
+    background-color: #f5f5f3;
+  }
+
+  .nav-bar__element___link {
+    display: none;
+  }
+
+  .logotipo {
+    display: none;
+  }
+
+  body {
+    animation: none;
+  }
+
+  .navegation {
+    grid-column: 1/2;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .main__right-side {
+    display: flex;
+    justify-content: center;
+  }
+
+  .main__right-side_image-model {
+    width: 130%;
+    text-align: center;
+  }
+
+  .element {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
+    column-gap: 3em;
+    row-gap: 1.5em;
+    padding-left: 3em;
+    padding-right: 3em;
+
+    /* .element {
+      display: grid;
+      grid-template-rows: auto 1fr 1fr;
+      justify-items: center;
+      align-items: center;
+      border-radius: 5%;
+      background-color: rgb(215, 144, 157);
+      padding: 2em;
+      color: white;
+    } */
+  }
+
+  .circle {
+    width: 200px;
+    height: 200px;
+  }
+
+  .services__container__element__service {
+    text-align: center;
+    line-height: 2em;
+    grid-column: 2/4;
+  }
+
+  .services__container__element__button {
+    grid-column: 1/-1;
+  }
+
+  .cta2 {
+    text-transform: uppercase;
+  }
+
+  .testimonials__container {
+    display: grid !important; /* Ensure grid applies */
+    grid-template-columns: 1fr !important; /* Force one column */
+    grid-template-rows: auto !important; /* Rows adjust to content */
+    gap: 4em !important; /* Ensure spacing */
+    text-align: center; /* Center text */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .testimonials {
+    grid-template-rows: auto auto !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .testimonial {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 3em;
+  }
+
+  .services__container {
+    /* Force a single-column layout on mobile */
+    grid-template-columns: 1fr !important;
+    row-gap: 4em;
+  }
+
+  .testimonialPenelope,
+  .testimonialMaria,
+  .testimonialLaura,
+  .services__container__manicura,
+  .services__container__maquillaje,
+  .services__container__peluqueria {
+    grid-row: auto !important;
+    grid-column: auto !important;
+  }
+
+  .testimonials__title {
+    text-align: center;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+  }
+
+  .services__container__title {
+    text-align: center;
+  }
 }
 
 @media screen and (min-width: 1024px) {
   body {
     animation: color 12s ease-in-out infinite;
+  }
+
+  svg {
+    display: none;
   }
 
   @keyframes color {
